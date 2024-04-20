@@ -12,18 +12,18 @@ app.use(cors());
 app.use('/resource', express.static(path.join(__dirname, 'resource')));
 
 
-//Services
-const accountServices = require('./service/account.services');
-const productServices = require('./service/product.services');
-const categoryServices = require('./service/category.services');
-const brandServices = require('./service/brand.services');
-const roleServices = require('./service/role.services');
-const cartServices = require('./service/cart.services');
-const postServices = require('./service/post.services');
-const post_contentServices = require('./service/post_content.services');
-const orderServices = require('./service/order.services');
-const recommendServices = require('./service/recommend.services');
-const statistic = require('./service/product.statistics');
+//routess
+const accountServices = require('./routes/account');
+const productServices = require('./routes/product');
+const categoryServices = require('./routes/category');
+const brandServices = require('./routes/brand');
+const roleServices = require('./routes/role');
+const cartServices = require('./routes/cart');
+const postServices = require('./routes/post');
+const post_contentServices = require('./routes/post_content');
+const orderServices = require('./routes/order');
+const recommendServices = require('./routes/recommend');
+const statistic = require('./routes/product.statistics');
 
 app.use('/account',accountServices);
 app.use('/product',productServices);

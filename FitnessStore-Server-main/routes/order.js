@@ -35,25 +35,6 @@ router.get('/acc/:account_id', async (req, res) => {
                         model: Product,
                         as:'product'
                     }
-                },
-                {
-                    model: Ward,
-                    as: 'ward_code_ward',
-                    attributes: ['code', 'full_name'],
-                    include: [
-                        {
-                            model: District,
-                            as: 'district_code_district',
-                            attributes: ['code', 'full_name'],
-                            include: [
-                                {
-                                    model: Province,
-                                    as: 'province_code_province',
-                                    attributes: ['code', 'full_name'],
-                                },
-                            ],
-                        },
-                    ]
                 }
             ]
         });
@@ -87,13 +68,12 @@ router.get('/ord/:orderId', isAuthenticated, async (req, res) => {
 });
 router.post('/', isAuthenticated, async (req, res) => {
     try {
-        const { account_id, ward_code, total , items} = req.body;
+        const { account_id, total , items} = req.body;
         const ids = JSON.parse(items);
         try {
             // Tạo đơn hàng
             const order = await Order.create({
                 account_id,
-                ward_code,
                 date: new Date(),
                 total
             });

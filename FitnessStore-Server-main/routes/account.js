@@ -10,8 +10,8 @@ const nodemailer = require('nodemailer');
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: 'manduong2k2@gmail.com', 
-    pass: 'kzihyxskesrhkeht', 
+    user: 'vinhtranthe117@gmail.com', 
+    pass: 'iylozgvbnomkeieo', 
   },
 });
 var verificationCodes = [];
@@ -125,24 +125,6 @@ router.get('/:id', async (req, res) => {
         as: 'role_id_Roles',
         attributes: ['id', 'name'],
         through: { attributes: [] }
-      }, {
-        model: Ward,
-        as: 'ward_code_ward',
-        attributes: ['code', 'full_name'],
-        include: [
-          {
-            model: District,
-            as: 'district_code_district',
-            attributes: ['code', 'full_name'],
-            include: [
-              {
-                model: Province,
-                as: 'province_code_province',
-                attributes: ['code', 'full_name'],
-              },
-            ],
-          },
-        ]
       }
       ]
     });
@@ -151,7 +133,8 @@ router.get('/:id', async (req, res) => {
     }
     res.json(account);
   } catch (err) {
-    console.error(err);
+    //console.error(err);
+    console.log(err)
     res.status(500).send('Server Error');
   }
 });
